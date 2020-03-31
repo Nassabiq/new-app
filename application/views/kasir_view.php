@@ -15,29 +15,35 @@
 					<?php $this->load->view("_partials/navbar.php"); ?>
 					<div class="container">
 						
-						<h2> Kasir </h2>
+						<h4>Kasir</h4>
 						<hr>
 						<form>
-							<div class="form-group col-sm-3 col-form-label col-form-label-sm m-0">
-								<label for="inputAddress">No Transaksi</label>
-								<input type="text" class="form-control form-control-sm" id="inputAddress" placeholder="No Transaksi">
-							</div>
-							<div class="form-group col-sm-3 col-form-label col-form-label-sm m-0">
-								<label for="inputAddress2">Tanggal Transaksi</label>
-								<input type="date" class="form-control form-control-sm" id="inputAddress2" placeholder="Tanggal Transaksi">
+							<div class="form-row py-2 mb-2" style="background-color: #b9edec;">
+								<div class="form-group col-sm-3 col-form-label col-form-label-sm my-0">
+									<label for="inputAddress">No Transaksi</label>
+									<input type="text" class="form-control form-control-sm" id="inputAddress" placeholder="No Transaksi">
+								</div>
+								<div class="form-group col-sm-2 col-form-label col-form-label-sm m-0">
+									<label for="inputAddress2">Tanggal Transaksi</label>
+									<input type="date" class="form-control form-control-sm" id="inputAddress2" placeholder="Tanggal Transaksi">
+								</div>
 							</div>
 							<div class="form-row">
-								<div class="form-group col-sm-3 col-form-label col-form-label-sm">
+								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
+									<!-- <label for="inputEmail4">Nama Barang</label> -->
+									<input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="id Barang">
+								</div>
+								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
 									<!-- <label for="inputEmail4">Nama Barang</label> -->
 									<input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="Nama Barang">
 								</div>
-								<div class="form-group col-sm-3 col-form-label col-form-label-sm">
+								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
 									<!-- <label for="inputPassword4">Harga</label> -->
 									<input type="password" class="form-control form-control-sm" id="inputPassword4" placeholder="Harga">
 								</div>
-								<div class="form-group col-sm-3 col-form-label col-form-label-sm">
+								<div class="form-group col-sm-1 col-form-label col-form-label-sm">
 									<!-- <label for="inputPassword4">Jumlah</label> -->
-									<input type="password" class="form-control form-control-sm" id="inputPassword4" placeholder="Jumlah">
+									<input type="password" class="form-control form-control-sm" id="inputPassword4" placeholder="Qty">
 								</div>
 								<div class="form-group col-sm-3 col-form-label col-form-label-sm">
 									<button type="submit" class="btn btn-primary btn-sm">Submit</button>
@@ -47,7 +53,6 @@
 					</div>
 				</div>
 				<!-- End of Main Content -->
-				<?php $this->load->view("_partials/footer.php"); ?>
 			</div>
 			<!-- End of Content Wrapper -->
 		</div>
