@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-	class mkasir extends CI_Model
+	class mproduk extends CI_Model
 	{
 		
 		public function __construct(){

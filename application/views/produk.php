@@ -14,9 +14,34 @@
 				<div id="content">
 					<?php $this->load->view("_partials/navbar.php"); ?>
 					<div class="container">
-						
-						
-
+						<h2>Daftar Produk</h1>
+						<button type="button" class="btn btn-primary mb-2">
+							<i class="fas fa-plus"></i>
+							Tambah Produk
+						</button>
+						<table id="produk" class="table">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col">No</th>
+									<th scope="col">Produk</th>
+									<th scope="col">Harga</th>
+									<th scope="col">Kategori</th>
+								</tr>
+							</thead>
+							<?php
+							$no = 1;
+							foreach ($produk as $row ):
+							?>
+							<tbody>
+								<tr>
+									<th scope="row"><?php echo $no++;  ?> </th>
+									<td><?php echo $row->namaproduk  ?></td>
+									<td><?php echo $row->hargaproduk  ?></td>
+									<td><?php echo $row->kategoriproduk ?></td>
+								</tr>
+							</tbody>
+							<?php endforeach;  ?>
+						</table>
 					</div>
 				</div>
 				<!-- End of Main Content -->

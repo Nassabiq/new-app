@@ -39,6 +39,7 @@
 					<h6 class="collapse-header">Laporan</h6>
 					<a class="collapse-item" href="utilities-color.html">Penjualan</a>
 					<a class="collapse-item" href="utilities-border.html">Pembelian</a>
+					<a class="collapse-item" href="<?php echo site_url('cproduk') ?>">Produk</a>
 				</div>
 			</li>
 			<!-- Divider -->

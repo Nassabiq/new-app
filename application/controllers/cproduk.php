@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ckasir extends CI_Controller {
+class cproduk extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,14 +20,14 @@ class ckasir extends CI_Controller {
 	 */
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('mkasir');
+		$this->load->model('mproduk');
 		$this->load->helper('url');
 	}
 
 	public function index()
 	{
-		$data['title'] = "Kasir";
-		$data['produk'] = $this->mkasir->getProduk();
-		$this->load->view('kasir_view', $data);
+		$data['title'] = "Produk";
+		$data['produk'] = $this->mproduk->getProduk();
+		$this->load->view('produk', $data);
 	}
 }
