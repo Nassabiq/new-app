@@ -12,38 +12,63 @@
 			date_default_timezone_set('Asia/Jakarta');
 			
 		}
-
 		public function index()
 		{
 			$data['title'] = "Kasir";
 			$data['produk'] = $this->mproduk->getProduk();
-
 			$waktu = date('Ymhdis');
 			$data['idtransaksi'] = $this->mkasir->getId();
 			$data['tglpenjualan'] = date('Y-m-d H:i:s');
-
-
- 			$this->load->view("kasir_view", $data);
+			$this->load->view("kasir_view", $data);
 		}
-
 		public function add_cart()
 		{
 			$data = array(
 				'idproduk' => $this->input->post('idproduk'),
 				'namaproduk' => $this->input->post('namaproduk'),
 				'hargaproduk' => $this->input->post('hargaproduk'),
-				'qty' => $this->input->post('qty'), 
+				'qty' => $this->input->post('qty'),
 			);
+			var_dump (json_encode($data));
 			$this->cart->insert($data);
 			echo $this->show_cart();
 		}
-
-		public function cetak()
+		public function show_cart()
 		{
+			$output = "";
+			$no = 0;
+			foreach ($this->cart->content() as $items) {
+				$no++;
+				$output .='
+					<tr>
+						<td>' .$items['namaproduk'].'</td>
+						<td>' .$items['hargaproduk'].' </td>
+						<td>' .$items['qty'].' </td>
+						<td>' .$items['subtotal'].' </td>
+						<td><button type="button" id=" '.$items['rowid'].' " class="hapus_cart btn btn-danger btn-xs">Batal</button></td>
+					/tr>
+				';
+			}
+			$output .="
+			<tr>
+				<th> Total </th>
+				<th>"." Rp " .number_format($this->cart->total())." </th>
+			</tr>
+			";
 
-
+			return $output;
 		}
 
+		public function load_cart(){
+			echo $this->show_cart();
+		}
+
+		public function cek_ajax()
+		{
+			$idproduk = $this->input->post('idproduk');
+			$data = $this->mkasir->getProdukId($idproduk);
+			echo json_encode($data);
+		}
 		
 	
 	}

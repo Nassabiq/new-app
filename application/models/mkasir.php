@@ -40,7 +40,14 @@ class mkasir extends CI_Model {
 			$idtampil = "UQMED".$batas;
 			return $idtampil;
 		}
-		
+
+		public function getProdukId()
+		{
+			$query = $this->db->get('produk')
+					->where('idproduk', $idproduk);
+			return $query->result();
+		}
+	
 	}
 
 	

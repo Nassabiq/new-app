@@ -34,8 +34,8 @@
 							</div>
 							<div class="form-row">
 								<div class="input-group col-sm-2 input-group-sm mt-1">
-									<!-- <label for="inputEmail4">Nama Barang</label> -->
-									<select class="custom-select" name="namaproduk" id="namaproduk" onchange="getIdProduk()" required>
+									<!-- Nama Produk -->
+									<select class="custom-select" name="namaproduk" id="namaproduk"  required>
 										<option>Nama Barang</option>
 										<?php foreach ($produk as $row): ?>
 										<option value="<?php echo $row->idproduk;?>"> <?php echo $row->namaproduk; ?> </option>
@@ -43,19 +43,19 @@
 									</select>
 								</div>
 								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
-									<!-- <label for="inputEmail4">Nama Barang</label> -->
+									<!-- id Barang -->
 									<input type="text" class="form-control form-control-sm" id="idbarang" placeholder="id Barang" readonly>
 								</div>
 								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
-									<!-- <label for="inputPassword4">Harga</label> -->
+									<!-- Harga Barang -->
 									<input type="text" class="form-control form-control-sm" id="hargaproduk" placeholder="Harga" readonly>
 								</div>
 								<div class="form-group col-sm-1 col-form-label col-form-label-sm">
-									<!-- <label for="inputPassword4">Jumlah</label> -->
-									<input type="text" class="form-control form-control-sm" id="inputPassword4" placeholder="Qty">
+									<!-- QTY -->
+									<input type="text" class="form-control form-control-sm" id="<?php echo $row->idproduk  ?> " placeholder="Qty">
 								</div>
 								<div class="form-group col-sm-3 col-form-label col-form-label-sm">
-									<button type="submit" class="btn btn-primary btn-sm">Submit</button>
+									<button type="submit" class="add_cart btn btn-primary btn-sm">Submit</button>
 								</div>
 							</div>
 						</form>
@@ -73,7 +73,7 @@
 											<th scope="col">#</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id="detail_cart">
 										
 									</tbody>
 								</table>
@@ -96,11 +96,23 @@
 		<?php $this->load->view("_partials/js.php"); ?>
 		
 		<script>
-			function getIdProduk() {
-				const tes = document.getElementById('namaproduk').value;
-				document.getElementById('idbarang').value=tes;
-				// document.getElementById('hargaproduk').value=tes;
-			}
+			$("#namaproduk").change(function() {
+				
+				var namaproduk = $("#namaproduk").val();
+
+				$.ajax({
+					url : "<?php echo site_url('ckasir/cek_ajax');?>",
+					method : "POST",
+					data : {namaproduk : namaproduk},
+					async : false,
+					datatype: 'json',
+					success: function (data) {
+						$("#idbarang").attr("value", "<?php echo $row->idproduk; ?> ")
+						$("#hargaproduk").attr("value", "<?php echo $row->hargaproduk; ?> ") 	 	
+					}	
+				});
+			});
 		</script>
 	</body>
 </html>
+
