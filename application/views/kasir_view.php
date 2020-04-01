@@ -19,7 +19,7 @@
 						<hr>
 						<form method="post" action="">
 							<div class="form-row py-2 mb-1" style="background-color: #b9edec;">
-								<div class="form-group col-sm-2 col-form-label col-form-label-sm my-0">
+								<div class="form-group col-sm-3 col-form-label col-form-label-sm my-0">
 									<label for="inputAddress">No Transaksi</label>
 									<input type="text" class="form-control form-control-sm" id="inputAddress" value="<?php echo $idtransaksi ?> " placeholder="No Transaksi" readonly="">
 								</div>
@@ -33,22 +33,22 @@
 								</div>
 							</div>
 							<div class="form-row">
-								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
-									<!-- <label for="inputEmail4">Nama Barang</label> -->
-									<input type="txt" class="form-control form-control-sm" id="inputEmail4" placeholder="id Barang">
-								</div>
 								<div class="input-group col-sm-2 input-group-sm mt-1">
 									<!-- <label for="inputEmail4">Nama Barang</label> -->
-									<select class="custom-select" name="namaproduk" id="namaproduk" required>
+									<select class="custom-select" name="namaproduk" id="namaproduk" onchange="getIdProduk()" required>
 										<option>Nama Barang</option>
 										<?php foreach ($produk as $row): ?>
-											<option value="<?php echo $row->idproduk;?>"> <?php echo $row->namaproduk; ?> </option>
+										<option value="<?php echo $row->idproduk;?>"> <?php echo $row->namaproduk; ?> </option>
 										<?php endforeach; ?>
 									</select>
 								</div>
 								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
+									<!-- <label for="inputEmail4">Nama Barang</label> -->
+									<input type="text" class="form-control form-control-sm" id="idbarang" placeholder="id Barang" readonly>
+								</div>
+								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
 									<!-- <label for="inputPassword4">Harga</label> -->
-									<input type="text" class="form-control form-control-sm" id="inputPassword4" placeholder="Harga">
+									<input type="text" class="form-control form-control-sm" id="hargaproduk" placeholder="Harga" readonly>
 								</div>
 								<div class="form-group col-sm-1 col-form-label col-form-label-sm">
 									<!-- <label for="inputPassword4">Jumlah</label> -->
@@ -95,10 +95,12 @@
 		<?php $this->load->view("_partials/modal.php"); ?>
 		<?php $this->load->view("_partials/js.php"); ?>
 		
-		<!-- <script>
-			$(document).ready(function() {
-			$('#produk').DataTable();
-			} );
-		</script> -->
+		<script>
+			function getIdProduk() {
+				const tes = document.getElementById('namaproduk').value;
+				document.getElementById('idbarang').value=tes;
+				// document.getElementById('hargaproduk').value=tes;
+			}
+		</script>
 	</body>
 </html>

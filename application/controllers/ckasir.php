@@ -19,7 +19,7 @@
 			$data['produk'] = $this->mproduk->getProduk();
 
 			$waktu = date('Ymhdis');
-			$data['idtransaksi'] = "UQMED - ".$waktu;
+			$data['idtransaksi'] = $this->mkasir->getId();
 			$data['tglpenjualan'] = date('Y-m-d H:i:s');
 
 

@@ -22,26 +22,28 @@ class mkasir extends CI_Model {
 				
 		}
 
-	public function getProdukById()
-	{
-		$idpro = $this->db->select("MAX(idproduk) as kd_max ");
-		$increment = "";
-		if ($idpro->num_rows()>0) {
-			foreach ($idpro->result() as $id) {
-				$nilai = ((int)$nilai->kd_max)+1;
-				$increment = sprintf("%04s",$nilai);
+		public function getId()
+		{
+			$this->db->select('MAX(penjualan.idtransaksi) as idtransaksi', false);
+			$query = $this->db->get('penjualan');
+
+			if ($query->num_rows() <> 0) {
+				$data = $query->row();
+				$kode = intval($data->idtransaksi) + 1;
 			}
-		}
-		else {
-			$increment = "00001";
-		}
+			else
+			{
+				$kode = 1;
+			}
 
-		return $increment;
-
+			$batas = str_pad($kode, 6, "0", STR_PAD_LEFT);
+			$idtampil = "UQMED".$batas;
+			return $idtampil;
+		}
 		
 	}
 
 	
-}
+
 /* End of file mkasir.php */
 /* Location: ./application/models/mkasir.php */
