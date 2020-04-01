@@ -17,39 +17,71 @@
 						
 						<h4>Kasir</h4>
 						<hr>
-						<form>
-							<div class="form-row py-2 mb-2" style="background-color: #b9edec;">
-								<div class="form-group col-sm-3 col-form-label col-form-label-sm my-0">
+						<form method="post" action="">
+							<div class="form-row py-2 mb-1" style="background-color: #b9edec;">
+								<div class="form-group col-sm-2 col-form-label col-form-label-sm my-0">
 									<label for="inputAddress">No Transaksi</label>
-									<input type="text" class="form-control form-control-sm" id="inputAddress" placeholder="No Transaksi">
+									<input type="text" class="form-control form-control-sm" id="inputAddress" value="<?php echo $idtransaksi ?> " placeholder="No Transaksi" readonly="">
 								</div>
 								<div class="form-group col-sm-2 col-form-label col-form-label-sm m-0">
 									<label for="inputAddress2">Tanggal Transaksi</label>
-									<input type="date" class="form-control form-control-sm" id="inputAddress2" placeholder="Tanggal Transaksi">
+									<input type="text" class="form-control form-control-sm" id="inputAddress2" placeholder="Tanggal Transaksi" value="<?php echo $tglpenjualan  ?> " readonly>
+								</div>
+								<div class="form-group col-sm-3 col-form-label col-form-label-sm my-0">
+									<label for="inputAddress">Nama Pelanggan</label>
+									<input type="text" class="form-control form-control-sm" id="inputAddress" placeholder="Nama Pelanggan">
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
 									<!-- <label for="inputEmail4">Nama Barang</label> -->
-									<input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="id Barang">
+									<input type="txt" class="form-control form-control-sm" id="inputEmail4" placeholder="id Barang">
 								</div>
-								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
+								<div class="input-group col-sm-2 input-group-sm mt-1">
 									<!-- <label for="inputEmail4">Nama Barang</label> -->
-									<input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="Nama Barang">
+									<select class="custom-select" name="namaproduk" id="namaproduk" required>
+										<option>Nama Barang</option>
+										<?php foreach ($produk as $row): ?>
+											<option value="<?php echo $row->idproduk;?>"> <?php echo $row->namaproduk; ?> </option>
+										<?php endforeach; ?>
+									</select>
 								</div>
 								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
 									<!-- <label for="inputPassword4">Harga</label> -->
-									<input type="password" class="form-control form-control-sm" id="inputPassword4" placeholder="Harga">
+									<input type="text" class="form-control form-control-sm" id="inputPassword4" placeholder="Harga">
 								</div>
 								<div class="form-group col-sm-1 col-form-label col-form-label-sm">
 									<!-- <label for="inputPassword4">Jumlah</label> -->
-									<input type="password" class="form-control form-control-sm" id="inputPassword4" placeholder="Qty">
+									<input type="text" class="form-control form-control-sm" id="inputPassword4" placeholder="Qty">
 								</div>
 								<div class="form-group col-sm-3 col-form-label col-form-label-sm">
 									<button type="submit" class="btn btn-primary btn-sm">Submit</button>
 								</div>
 							</div>
 						</form>
+						<hr>
+						<div class="row">
+							<div class="col-sm-8">
+								<table class="table table-sm">
+									<thead class="thead-light table-bordered">
+										<tr>
+											<th scope="col">No</th>
+											<th scope="col">Id Barang</th>
+											<th scope="col">Nama Barang</th>
+											<th scope="col">Jumlah</th>
+											<th scope="col">Harga</th>
+											<th scope="col">#</th>
+										</tr>
+									</thead>
+									<tbody>
+										
+									</tbody>
+								</table>
+							</div>
+							<div class="col-sm">
+								One of three columns
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- End of Main Content -->
