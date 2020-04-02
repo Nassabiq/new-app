@@ -29,7 +29,7 @@
 				'hargaproduk' => $this->input->post('hargaproduk'),
 				'qty' => $this->input->post('qty'),
 			);
-			var_dump (json_encode($data));
+			// var_dump (json_encode($data));
 			$this->cart->insert($data);
 			echo $this->show_cart();
 		}
@@ -65,9 +65,13 @@
 
 		public function cek_ajax()
 		{
+			
 			$idproduk = $this->input->post('idproduk');
-			$data = $this->mkasir->getProdukId($idproduk);
+			$data = $this->mproduk->getProduk($idproduk);
+			
+
 			echo json_encode($data);
+			// print_r($_POST);
 		}
 		
 	

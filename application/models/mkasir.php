@@ -41,12 +41,11 @@ class mkasir extends CI_Model {
 			return $idtampil;
 		}
 
-		public function getProdukId()
-		{
-			$query = $this->db->get('produk')
-					->where('idproduk', $idproduk);
-			return $query->result();
-		}
+		// public function getProdukId()
+		// {
+		// 	$query = $this->db->get_where()
+		// 	return $query->result();
+		// }
 	
 	}
 

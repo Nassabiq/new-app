@@ -17,7 +17,9 @@
 						
 						<h4>Kasir</h4>
 						<hr>
-						<form method="post" action="">
+						
+						<form method="post" >
+							
 							<div class="form-row py-2 mb-1" style="background-color: #b9edec;">
 								<div class="form-group col-sm-3 col-form-label col-form-label-sm my-0">
 									<label for="inputAddress">No Transaksi</label>
@@ -35,16 +37,17 @@
 							<div class="form-row">
 								<div class="input-group col-sm-2 input-group-sm mt-1">
 									<!-- Nama Produk -->
-									<select class="custom-select" name="namaproduk" id="namaproduk"  required>
-										<option>Nama Barang</option>
+									<select class="custom-select" name="idproduk" id="idproduk"  required>
+										<option>id Barang</option>
 										<?php foreach ($produk as $row): ?>
-										<option value="<?php echo $row->idproduk;?>"> <?php echo $row->namaproduk; ?> </option>
+										<option value="<?php echo $row->idproduk; ?>"> <?php echo $row->idproduk; ?> </option>
 										<?php endforeach; ?>
 									</select>
 								</div>
+								
 								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
-									<!-- id Barang -->
-									<input type="text" class="form-control form-control-sm" id="idbarang" placeholder="id Barang" readonly>
+									<!-- Nama Barang -->
+									<input type="text" class="form-control form-control-sm" id="namaproduk" placeholder="Nama Produk" readonly>
 								</div>
 								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
 									<!-- Harga Barang -->
@@ -96,23 +99,34 @@
 		<?php $this->load->view("_partials/js.php"); ?>
 		
 		<script>
-			$("#namaproduk").change(function() {
-				
-				var namaproduk = $("#namaproduk").val();
+			$(document).ready(function(){
 
+
+			$("#idproduk").on('change', function() {
+				
+				var idproduk = $("#idproduk").val();
 				$.ajax({
 					url : "<?php echo site_url('ckasir/cek_ajax');?>",
 					method : "POST",
-					data : {namaproduk : namaproduk},
-					async : false,
-					datatype: 'json',
+					async : true,
+					data : {
+						'idproduk' : idproduk
+
+					},
+					datatype : "json",
 					success: function (data) {
-						$("#idbarang").attr("value", "<?php echo $row->idproduk; ?> ")
-						$("#hargaproduk").attr("value", "<?php echo $row->hargaproduk; ?> ") 	 	
-					}	
-				});
-			});
+						var arr = jQuery.parseJSON(data);
+						// for (var i = 0; i < arr.length; i++) {
+						// 	console.log('index: ' + i + ', id: ' + arr[i].idproduk + ', name: ' + arr[i].hargaproduk);
+						// }
+						    
+							$("#namaproduk").val(arr.namaproduk); 
+			        		$("#hargaproduk").val(arr.hargaproduk); 
+						console.log(arr);
+			}
+		});
+		});
+		});
 		</script>
 	</body>
 </html>
-
