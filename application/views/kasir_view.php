@@ -38,17 +38,17 @@
 								<div class="input-group col-sm-2 input-group-sm mt-1">
 									<!-- Nama Produk -->
 									<select class="custom-select" name="idproduk" id="idproduk"  required>
-										<option>id Barang</option>
+										<option>Nama Barang</option>
 										<?php foreach ($produk as $row): ?>
-										<option value="<?php echo $row->idproduk; ?>"> <?php echo $row->idproduk; ?> </option>
+										<option value="<?php echo $row->idproduk; ?>"> <?php echo $row->namaproduk; ?> </option>
 										<?php endforeach; ?>
 									</select>
 								</div>
 								
-								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
+								<!-- <div class="form-group col-sm-2 col-form-label col-form-label-sm"> -->
 									<!-- Nama Barang -->
-									<input type="text" class="form-control form-control-sm" id="namaproduk" placeholder="Nama Produk" readonly>
-								</div>
+									<!-- <input type="text" class="form-control form-control-sm" id="namaproduk" placeholder="Nama Produk" readonly> -->
+								<!-- </div> -->
 								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
 									<!-- Harga Barang -->
 									<input type="text" class="form-control form-control-sm" id="hargaproduk" placeholder="Harga" readonly>

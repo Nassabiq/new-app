@@ -37,7 +37,7 @@
 									<th scope="row"><?php echo $no++;  ?> </th>
 									<td><?php echo $row->namaproduk  ?></td>
 									<td><?php echo $row->hargaproduk  ?></td>
-									<td><?php echo $row->kategoriproduk ?></td>
+									<td><?php echo $row->namakategori ?></td>
 								</tr>
 							</tbody>
 							<?php endforeach;  ?>
