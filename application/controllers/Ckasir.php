@@ -1,11 +1,12 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	
-	class ckasir extends CI_Controller {
+	class Ckasir extends CI_Controller {
 		
 		public function __construct()
 		{
 			parent::__construct();
+			$this->load->helper(array('url'));
 			$this->load->model('mkasir');
 			$this->load->model('mproduk');
 			$this->load->library('cart');
@@ -70,8 +71,8 @@
 			$data = $this->mproduk->getProduk($idproduk);
 			
 
-			echo json_encode($data);
-			// print_r($_POST);
+			echo json_encode($data, JSON_NUMERIC_CHECK);
+			// print_r($data);
 		}
 		
 	

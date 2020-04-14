@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class mkasir extends CI_Model {
+class Mkasir extends CI_Model {
 
 	public function __construct(){
 			parent:: __construct();
@@ -41,11 +41,11 @@ class mkasir extends CI_Model {
 			return $idtampil;
 		}
 
-		// public function getProdukId()
-		// {
-		// 	$query = $this->db->get_where()
-		// 	return $query->result();
-		// }
+		public function getProdukId($idproduk)
+		{
+			$query= $this->db->get_where('produk',array('idproduk' => $idproduk));
+			return $query;
+		}
 	
 	}
 

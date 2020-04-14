@@ -40,22 +40,22 @@
 									<select class="custom-select" name="idproduk" id="idproduk"  required>
 										<option>Nama Barang</option>
 										<?php foreach ($produk as $row): ?>
-										<option value="<?php echo $row->idproduk; ?>"> <?php echo $row->namaproduk; ?> </option>
+										<option value="<?php echo $row['idproduk']; ?>"> <?php echo $row['namaproduk']; ?> </option>
 										<?php endforeach; ?>
 									</select>
 								</div>
 								
-								<!-- <div class="form-group col-sm-2 col-form-label col-form-label-sm"> -->
+								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
 									<!-- Nama Barang -->
-									<!-- <input type="text" class="form-control form-control-sm" id="namaproduk" placeholder="Nama Produk" readonly> -->
-								<!-- </div> -->
+									<input type="text" class="form-control form-control-sm" id="namaproduk" placeholder="ID Produk" readonly>
+								</div>
 								<div class="form-group col-sm-2 col-form-label col-form-label-sm">
 									<!-- Harga Barang -->
 									<input type="text" class="form-control form-control-sm" id="hargaproduk" placeholder="Harga" readonly>
 								</div>
 								<div class="form-group col-sm-1 col-form-label col-form-label-sm">
 									<!-- QTY -->
-									<input type="text" class="form-control form-control-sm" id="<?php echo $row->idproduk  ?> " placeholder="Qty">
+									<input type="text" class="form-control form-control-sm" id="<?php echo $row['idproduk'];  ?> " placeholder="Qty">
 								</div>
 								<div class="form-group col-sm-3 col-form-label col-form-label-sm">
 									<button type="submit" class="add_cart btn btn-primary btn-sm">Submit</button>
@@ -108,22 +108,28 @@
 				$.ajax({
 					url : "<?php echo site_url('ckasir/cek_ajax');?>",
 					method : "POST",
-					async : true,
 					data : {
 						'idproduk' : idproduk
 
 					},
 					datatype : "json",
 					success: function (data) {
-						var arr = jQuery.parseJSON(data);
-						// for (var i = 0; i < arr.length; i++) {
-						// 	console.log('index: ' + i + ', id: ' + arr[i].idproduk + ', name: ' + arr[i].hargaproduk);
-						// }
-						    
-							$("#namaproduk").val(arr.namaproduk); 
-			        		$("#hargaproduk").val(arr.hargaproduk); 
-						console.log(arr);
-			}
+						var arr = JSON.parse(data);
+						var id = '';
+						for (var index = 0; index < arr.length; index++) {
+							id = arr[index];
+							// console.log(id.idproduk);
+							if (id.idproduk == idproduk) {
+								$("#namaproduk").val(id.idproduk);
+								// console.log(id.idproduk);
+								if (id.hargaproduk == arr[index].hargaproduk) {
+									$("#hargaproduk").val(id.hargaproduk);	
+								}
+									
+							}
+						}
+					}
+
 		});
 		});
 		});

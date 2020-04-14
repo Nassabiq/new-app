@@ -23,7 +23,7 @@
 		</div>
 		<!-- Nav Item - Pages Collapse Menu -->
 		<li class="nav-item">
-			<a class="nav-link kasir" href="<?php echo site_url('ckasir') ?>">
+			<a class="nav-link kasir" href="<?php echo site_url('Ckasir') ?>">
 				<i class="fas fa-cash-register"></i>
 				<span>Kasir</span>
 			</a>
@@ -39,7 +39,7 @@
 					<h6 class="collapse-header">Laporan</h6>
 					<a class="collapse-item" href="utilities-color.html">Penjualan</a>
 					<a class="collapse-item" href="utilities-border.html">Pembelian</a>
-					<a class="collapse-item" href="<?php echo site_url('cproduk') ?>">Produk</a>
+					<a class="collapse-item" href="<?php echo site_url('Cproduk') ?>">Produk</a>
 				</div>
 			</li>
 			<!-- Divider -->

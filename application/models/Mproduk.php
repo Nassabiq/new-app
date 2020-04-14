@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-	class mproduk extends CI_Model
+	class Mproduk extends CI_Model
 	{
 		
 		public function __construct(){
@@ -13,7 +13,7 @@
 			
 			$query = $this->db->get();
 			if($query->num_rows() != 0) {
-				return $query->result();
+				return $query->result_array();
 			}
 			else {
 				return false;
