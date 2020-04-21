@@ -25,43 +25,31 @@
 		public function add_cart()
 		{
 			$data = array(
-				'idproduk' => $this->input->post('idproduk'),
-				'namaproduk' => $this->input->post('namaproduk'),
-				'hargaproduk' => $this->input->post('hargaproduk'),
-				'qty' => $this->input->post('qty'),
+				'id' => $this->input->post('idproduk'),
+				'name' => $this->input->post('namaproduk'),
+				'price' => $this->input->post('hargaproduk'),
+				'qty' => $this->input->post('qty')
 			);
-			// var_dump (json_encode($data));
-			$this->cart->insert($data);
-			echo $this->show_cart();
+			$tambah = $this->cart->insert($data);
+			// print_r($data);
+			// echo "berhasil";
 		}
-		public function show_cart()
+		public function del_cart()
 		{
-			$output = "";
-			$no = 0;
-			foreach ($this->cart->content() as $items) {
-				$no++;
-				$output .='
-					<tr>
-						<td>' .$items['namaproduk'].'</td>
-						<td>' .$items['hargaproduk'].' </td>
-						<td>' .$items['qty'].' </td>
-						<td>' .$items['subtotal'].' </td>
-						<td><button type="button" id=" '.$items['rowid'].' " class="hapus_cart btn btn-danger btn-xs">Batal</button></td>
-					/tr>
-				';
-			}
-			$output .="
-			<tr>
-				<th> Total </th>
-				<th>"." Rp " .number_format($this->cart->total())." </th>
-			</tr>
-			";
-
-			return $output;
+			$rowid = $this->uri->segment(3);
+			$data = array(
+				'rowid' => $rowid,
+				'qty' => 0
+			);
+			$update = $this->cart->update($data);
+			redirect('ckasir');
+			
 		}
-
-		public function load_cart(){
-			echo $this->show_cart();
+		public function cancel_cart()
+		{
+			$cancel = $this->cart->destroy();
+			redirect('ckasir');
+			
 		}
 
 		public function cek_ajax()
@@ -71,7 +59,7 @@
 			$data = $this->mproduk->getProduk($idproduk);
 			
 
-			echo json_encode($data, JSON_NUMERIC_CHECK);
+			echo json_encode($data);
 			// print_r($data);
 		}
 		

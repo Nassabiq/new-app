@@ -1,5 +1,6 @@
 <!-- Bootstrap core JavaScript-->
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="<?php echo base_url("assets/autoNumeric/autoNumeric.js") ?>"></script>
 <script src="<?php echo base_url("assets/bootstrap/js/bootstrap.bundle.min.js") ?> "></script>
 <!-- Core plugin JavaScript-->
 <script src="<?php echo base_url("assets/jquery-easing/jquery.easing.min.js") ?> "></script>

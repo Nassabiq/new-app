@@ -41,10 +41,9 @@ class Mkasir extends CI_Model {
 			return $idtampil;
 		}
 
-		public function getProdukId($idproduk)
+		public function simpanTransaksi()
 		{
-			$query= $this->db->get_where('produk',array('idproduk' => $idproduk));
-			return $query;
+			# code...
 		}
 	
 	}
